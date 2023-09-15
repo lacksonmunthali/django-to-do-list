@@ -1,0 +1,45 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'  %}">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        
+        <!-- Login Form -->
+        <div id="login-section">
+        <form action="/" method="post">
+            <h2>Login</h2>
+            {% comment %} <label for="login-username">Username:</label>
+            <input type="text" id="login-username" placeholder="Enter your username">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" placeholder="Enter your password">
+            <button onclick="login()">Login</button> {% endcomment %}
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Login</button>
+            <a href="{% url 'signup' %}">Sign up</a>
+        </form>
+        </div>
+
+        <!-- To-Do List Section -->
+        <div id="todo-section" style="display: none;">
+            <label for="task">Add a new task:</label>
+            <input type="text" id="task" placeholder="Enter a task">
+            <button onclick="addTask()">Add Task</button>
+            
+            <ul id="task-list">
+                <!-- Tasks will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List Dashboard</h1>
+        
+        <!-- Task List Section -->
+        <div id="task-list-section">
+            <a href="{% url 'create_task' %}">Create task</a>
+            <h2>All To-Do Tasks</h2>
+            <ul id="task-list">
+                <!-- Tasks will be dynamically added here -->
+                {% for task in tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong><br>
+                    Description: {{ task.description }}<br>
+                    Category: {{ task.category }}<br>
+                    Start Date/Time: {{ task.start_datetime }}<br>
+                    End Date/Time: {{ task.end_datetime }}<br>
+                    Completed: {{ task.completed|yesno:"Yes,No" }}
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+{% endblock %}

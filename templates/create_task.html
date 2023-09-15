@@ -1,0 +1,56 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Task</h1>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <!-- Task Creation Form -->
+        <form id="create-task-form" method='post'>
+            {% comment %} <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter task title" required>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Enter task description" rows="4" required></textarea>
+            
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <!-- You can populate this dropdown with categories from your database -->
+                <option value="category1">Category 1</option>
+                <option value="category2">Category 2</option>
+                <!-- Add more options as needed -->
+            </select>
+            
+            <label for="start_datetime">Start Date/Time:</label>
+            <input type="datetime-local" id="start_datetime" name="start_datetime" required>
+            
+            <label for="end_datetime">End Date/Time:</label>
+            <input type="datetime-local" id="end_datetime" name="end_datetime" required> {% endcomment %}
+            {% csrf_token %}
+          
+            {{ form.title.label_tag }} {{ form.title }}<br>
+            {{ form.description.label_tag }} {{ form.description }}<br>
+            {{form.category.label_tag}} {{form.category}}
+            <br>
+            <label for="{{ form.start_datetime.id_for_label }}">Start Date/Time:</label>
+            <input type="datetime-local" id="{{ form.start_datetime.id_for_label }}" name="{{ form.start_datetime.name }}">
+            <br>
+            <label for="{{ form.end_datetime.id_for_label }}">End Date/Time:</label>
+            <input type="datetime-local" id="{{ form.end_datetime.id_for_label }}" name="{{ form.end_datetime.name }}">
+            <br> 
+            
+  
+            <button type="submit">Create Task</button>
+        </form>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+{% endblock %}

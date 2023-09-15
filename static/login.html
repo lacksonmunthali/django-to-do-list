@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        
+        <!-- Login Form -->
+        <div id="login-section">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username">
+            <button onclick="login()">Login</button>
+        </div>
+
+        <!-- To-Do List Section -->
+        <div id="todo-section" style="display: none;">
+            <label for="task">Add a new task:</label>
+            <input type="text" id="task" placeholder="Enter a task">
+            <button onclick="addTask()">Add Task</button>
+            
+            <ul id="task-list">
+                <!-- Tasks will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
